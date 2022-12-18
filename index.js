@@ -1,19 +1,24 @@
+// Initialize variables
 let grid;
 let cols;
 let rows;
 let resolution = 10;
+let width = screen.availWidth;
+let height = screen.height;
 
+// Creating the "grid"
 function make2DArray(cols, rows) {
   let arr = new Array(cols);
   for (let i = 0; i < arr.length; i++) {
     arr[i] = new Array(rows);
   }
-
   return arr;
 }
 
+// required function by our library (p5.js)
+// defines the canvas
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(width, height);
   cols = width / resolution;
   rows = height / resolution;
 
@@ -25,6 +30,8 @@ function setup() {
   }
 }
 
+// required function by our library (p5.js)
+// initializes the drawing of the cells
 function draw() {
   background(0);
 
@@ -42,11 +49,11 @@ function draw() {
 
   let next = make2DArray(cols, rows);
 
-  // Compute next based on grid
+  // compute next "frame" based on grid
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       let state = grid[i][j];
-      // Count live neighbors!
+      // count live neighbors
       let sum = 0;
       let neighbors = countNeighbors(grid, i, j);
 
@@ -59,10 +66,10 @@ function draw() {
       }
     }
   }
-
   grid = next;
 }
 
+// function to count live neighbors
 function countNeighbors(grid, x, y) {
   let sum = 0;
   for (let i = -1; i < 2; i++) {
