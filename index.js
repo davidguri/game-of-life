@@ -4,7 +4,7 @@ let cols;
 let rows;
 let resolution = 10;
 let width = screen.availWidth;
-let height = screen.height;
+let height = screen.height - 200;
 
 // Creating the "grid"
 function make2DArray(cols, rows) {
