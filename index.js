@@ -4,7 +4,7 @@ let cols;
 let rows;
 let resolution = 10;
 let width = screen.availWidth;
-let height = screen.height - 200;
+let height = screen.height - 150;
 
 // Creating the "grid"
 function make2DArray(cols, rows) {
@@ -82,3 +82,8 @@ function countNeighbors(grid, x, y) {
   sum -= grid[x][y];
   return sum;
 }
+
+/*
+the difference between this and the regular version of "Life", is that here you do not have
+the ability to "place" cells on the grid yourself, they are instead randomly generated.
+*/
